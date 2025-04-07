@@ -14,12 +14,16 @@
                 fullUrl += "?account=" + accountNumber;
             }
 
-            // 앱 실행 시도
-            window.location.href = fullUrl;
+            // iframe을 이용하여 강제 실행
+            let iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            iframe.src = fullUrl;
+            document.body.appendChild(iframe);
 
             // 일정 시간 후 앱이 실행되지 않으면 경고 표시
             setTimeout(function() {
                 alert("앱이 설치되어 있지 않거나 실행이 차단되었습니다.");
+                document.body.removeChild(iframe);
             }, 3000);
         }
     </script>
@@ -33,15 +37,6 @@
         <li><a href="#" onclick="openBankApp('hana1qpay://'); return false;">하나은행</a></li>
         <li><a href="#" onclick="openBankApp('ibk-bank://'); return false;">기업은행</a></li>
         <li><a href="#" onclick="openBankApp('nhb-bank://'); return false;">농협은행</a></li>
-        <li><a href="#" onclick="openBankApp('postbank://'); return false;">우체국</a></li>
-        <li><a href="#" onclick="openBankApp('busanbank://'); return false;">부산은행</a></li>
-        <li><a href="#" onclick="openBankApp('daegubank://'); return false;">대구은행</a></li>
-        <li><a href="#" onclick="openBankApp('kwangjubank://'); return false;">광주은행</a></li>
-        <li><a href="#" onclick="openBankApp('jeonbukbank://'); return false;">전북은행</a></li>
-        <li><a href="#" onclick="openBankApp('kdbbank://'); return false;">산업은행</a></li>
-        <li><a href="#" onclick="openBankApp('scbank://'); return false;">SC제일은행</a></li>
-        <li><a href="#" onclick="openBankApp('suhyupbank://'); return false;">수협은행</a></li>
-        <li><a href="#" onclick="openBankApp('kfccbank://'); return false;">신협</a></li>
         <li><a href="#" onclick="openBankApp('kakao-bank://'); return false;">카카오뱅크</a></li>
         <li><a href="#" onclick="openBankApp('toss-bank://'); return false;">토스뱅크</a></li>
         <li><a href="#" onclick="openBankApp('kbank://'); return false;">K뱅크</a></li>
