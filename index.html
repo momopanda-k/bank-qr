@@ -14,15 +14,8 @@
                 fullUrl += "?account=" + accountNumber;
             }
 
-            // iOS와 Android에서 다르게 실행 시도
-            setTimeout(() => {
-                window.location.href = fullUrl;
-            }, 100);
-
-            // 2초 후에도 실행 안 되면 해당 은행 홈페이지로 이동
-            setTimeout(() => {
-                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(fullUrl);
-            }, 2000);
+            // 앱 실행 시도
+            window.location.href = fullUrl;
         }
     </script>
 </head>
@@ -34,6 +27,23 @@
         <li><a href="wooribank://" onclick="openBankApp('wooribank://'); return false;">우리은행</a></li>
         <li><a href="hana1qpay://" onclick="openBankApp('hana1qpay://'); return false;">하나은행</a></li>
         <li><a href="ibk-bank://" onclick="openBankApp('ibk-bank://'); return false;">기업은행</a></li>
+        <li><a href="nhb-bank://" onclick="openBankApp('nhb-bank://'); return false;">농협은행</a></li>
+        <li><a href="postbank://" onclick="openBankApp('postbank://'); return false;">우체국</a></li>
+        <li><a href="busanbank://" onclick="openBankApp('busanbank://'); return false;">부산은행</a></li>
+        <li><a href="daegubank://" onclick="openBankApp('daegubank://'); return false;">대구은행</a></li>
+        <li><a href="kwangjubank://" onclick="openBankApp('kwangjubank://'); return false;">광주은행</a></li>
+        <li><a href="jeonbukbank://" onclick="openBankApp('jeonbukbank://'); return false;">전북은행</a></li>
+        <li><a href="kdbbank://" onclick="openBankApp('kdbbank://'); return false;">산업은행</a></li>
+        <li><a href="scbank://" onclick="openBankApp('scbank://'); return false;">SC제일은행</a></li>
+        <li><a href="suhyupbank://" onclick="openBankApp('suhyupbank://'); return false;">수협은행</a></li>
+        <li><a href="kfccbank://" onclick="openBankApp('kfccbank://'); return false;">신협</a></li>
+        <li><a href="kakao-bank://" onclick="openBankApp('kakao-bank://'); return false;">카카오뱅크</a></li>
+        <li><a href="toss-bank://" onclick="openBankApp('toss-bank://'); return false;">토스뱅크</a></li>
+        <li><a href="kbank://" onclick="openBankApp('kbank://'); return false;">K뱅크</a></li>
     </ul>
+
+    <p style="margin-top: 20px; color: red; font-weight: bold;">
+        앱이 설치되어 있지 않은 은행앱은 실행이 되지 않습니다.
+    </p>
 </body>
 </html>
