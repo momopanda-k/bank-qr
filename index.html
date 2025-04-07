@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>은행 앱 실행</title>
+    <script>
+        function openBankApp(bankUrl) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const accountNumber = urlParams.get('account');
+            if (accountNumber) {
+                window.location.href = bankUrl + "?account=" + accountNumber;
+            } else {
+                window.location.href = bankUrl;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>송금할 은행을 선택하세요</h2>
+    <ul>
+        <li><a href="#" onclick="openBankApp('kbbank://')">국민은행</a></li>
+        <li><a href="#" onclick="openBankApp('shinhan-sr-003://')">신한은행</a></li>
+        <li><a href="#" onclick="openBankApp('wooribank://')">우리은행</a></li>
+        <li><a href="#" onclick="openBankApp('hana1qpay://')">하나은행</a></li>
+        <li><a href="#" onclick="openBankApp('ibk-bank://')">기업은행</a></li>
+    </ul>
+</body>
+</html>
