@@ -8,22 +8,32 @@
         function openBankApp(bankUrl) {
             const urlParams = new URLSearchParams(window.location.search);
             const accountNumber = urlParams.get('account');
+            let fullUrl = bankUrl;
+
             if (accountNumber) {
-                window.location.href = bankUrl + "?account=" + accountNumber;
-            } else {
-                window.location.href = bankUrl;
+                fullUrl += "?account=" + accountNumber;
             }
+
+            // iOS와 Android에서 다르게 실행 시도
+            setTimeout(() => {
+                window.location.href = fullUrl;
+            }, 100);
+
+            // 2초 후에도 실행 안 되면 해당 은행 홈페이지로 이동
+            setTimeout(() => {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(fullUrl);
+            }, 2000);
         }
     </script>
 </head>
 <body>
     <h2>송금할 은행을 선택하세요</h2>
     <ul>
-        <li><a href="#" onclick="openBankApp('kbbank://')">국민은행</a></li>
-        <li><a href="#" onclick="openBankApp('shinhan-sr-003://')">신한은행</a></li>
-        <li><a href="#" onclick="openBankApp('wooribank://')">우리은행</a></li>
-        <li><a href="#" onclick="openBankApp('hana1qpay://')">하나은행</a></li>
-        <li><a href="#" onclick="openBankApp('ibk-bank://')">기업은행</a></li>
+        <li><a href="kbbank://" onclick="openBankApp('kbbank://'); return false;">국민은행</a></li>
+        <li><a href="shinhan-sr-003://" onclick="openBankApp('shinhan-sr-003://'); return false;">신한은행</a></li>
+        <li><a href="wooribank://" onclick="openBankApp('wooribank://'); return false;">우리은행</a></li>
+        <li><a href="hana1qpay://" onclick="openBankApp('hana1qpay://'); return false;">하나은행</a></li>
+        <li><a href="ibk-bank://" onclick="openBankApp('ibk-bank://'); return false;">기업은행</a></li>
     </ul>
 </body>
 </html>
